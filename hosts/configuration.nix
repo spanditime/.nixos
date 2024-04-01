@@ -4,7 +4,9 @@
 
 { config, lib, pkgs, user, hostName, ... }:
 {
-
+  imports = [
+    ../modules/services/pipewire.nix
+  ];
   users.users.${user} = {
     group = "users";
     extraGroups = [

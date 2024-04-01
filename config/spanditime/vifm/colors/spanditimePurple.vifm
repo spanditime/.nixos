@@ -1,0 +1,64 @@
+" automatically converted from Vim color scheme spanditimePurple
+
+highlight clear
+
+highlight Win guifg=#ffd5fc guibg=#1d001b gui=none
+highlight OtherWin guifg=#420040 ctermbg=-1 cterm=none
+" no conversion defined for AuxWin
+" no conversion defined for OddLine
+
+highlight TopLine guifg=#8b2384 guibg=#3d0039 gui=NONE ctermfg=7 ctermbg=15 cterm=reverse
+highlight TopLineSel ctermfg=7 ctermbg=0 cterm=bold,reverse
+
+highlight TabLine ctermfg=0 guibg=#a9a9a9 gui=none
+highlight TabLineSel ctermfg=7 ctermbg=15 cterm=bold
+
+highlight JobLine ctermfg=6 ctermbg=0 cterm=bold,reverse
+highlight StatusLine ctermfg=7 ctermbg=0 cterm=bold,reverse
+highlight Border guifg=#ffd5fc guibg=#1d001b gui=none
+
+highlight CurrLine guifg=#1d001b guibg=#ffd5fc gui=none
+highlight OtherLine guifg=#1d001b guibg=#ffd5fc gui=none
+highlight LineNr guifg=#ab57a6 guibg=#32022f gui=none
+
+highlight Selected ctermfg=0 guibg=#541450 gui=none
+highlight CmpMismatch ctermfg=0 guibg=#8b008b gui=none
+
+highlight SuggestBox guifg=#ffd5fc guibg=#1d001b gui=none
+highlight WildMenu guifg=#ffe6fd guibg=#32022f gui=none
+
+highlight CmdLine guifg=#ffd5fc guibg=#1d001b gui=none
+highlight ErrorMsg guifg=#ffffff guibg=#ff0000 gui=none
+
+highlight Directory guifg=#be5eee ctermbg=-1 cterm=none
+highlight Executable guifg=#a200ff ctermbg=-1 cterm=none
+highlight Socket guifg=#ffa500 ctermbg=-1 cterm=none
+highlight Device guifg=#ffa500 ctermbg=-1 cterm=none
+highlight Fifo guifg=#6720bd ctermbg=-1 cterm=none
+highlight Link guifg=#ff00ff ctermbg=-1 cterm=none
+highlight BrokenLink guifg=#0000ff guibg=#ffff00 gui=none
+" no conversion defined for HardLink
+
+" no conversion defined for User1..User9
+
+" warnings:
+" - incomplete source color scheme: missing bg of NonText
+" - incomplete source color scheme: missing fg of StatusLineNC
+" - incomplete source color scheme: missing bg of StatusLineNC
+" - incomplete source color scheme: missing fg of StatusLine
+" - incomplete source color scheme: missing bg of StatusLine
+" - incomplete source color scheme: missing fg of TabLine
+" - incomplete source color scheme: missing fg of TabLineSel
+" - incomplete source color scheme: missing bg of TabLineSel
+" - incomplete source color scheme: missing fg of MsgSeparator
+" - incomplete source color scheme: missing bg of MsgSeparator
+" - incomplete source color scheme: missing fg of StatusLine
+" - incomplete source color scheme: missing bg of StatusLine
+" - incomplete source color scheme: missing fg of Visual
+" - incomplete source color scheme: missing fg of DiffChange
+" - incomplete source color scheme: missing bg of Keyword
+" - incomplete source color scheme: missing bg of Macro
+" - incomplete source color scheme: missing bg of Debug
+" - incomplete source color scheme: missing bg of Delimiter
+" - incomplete source color scheme: missing bg of String
+" - incomplete source color scheme: missing bg of Number

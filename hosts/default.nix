@@ -5,12 +5,13 @@ let
   pkgs = import nixpkgs {
     inherit system;
   };
+  customPackages = import ../packages {inherit pkgs;};
   lib = nixpkgs.lib;
   standardConfig = import ./configuration.nix;
   utils = import ../utils;
   defaultAttributes = {
     inherit utils;
-    inherit inputs pkgs lib home-manager;
+    inherit inputs pkgs customPackages lib home-manager;
     inherit user location;
     inherit standardConfig;
   };

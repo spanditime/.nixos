@@ -2,7 +2,7 @@ local gears = require("gears")
 local awful = require("awful")
 local gfs = require("gears.filesystem")
 
-local battery
+battery
 
 if not battery then
 	battery = {
@@ -16,13 +16,16 @@ if not battery then
 					awesome.emit_signal('signal::battery', level_int, power)
 				end)
 		end,
+		enable = true,
 	}
 	gears.timer {
 		timeout   = 8,
 		call_now  = true,
 		autostart = true,
 		callback  = function()
-			battery.emit()
+			if battery.enable then
+				battery.emit()
+			end
 		end
 	}
 end

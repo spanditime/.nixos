@@ -5,24 +5,43 @@ let
   pkgs = import nixpkgs {
     inherit system;
   };
-  customPackages = import ../packages {inherit pkgs;};
+ # customPackages = import ../packages {inherit pkgs;};
   lib = nixpkgs.lib;
-  standardConfig = import ./configuration.nix;
-  utils = import ../utils;
   defaultAttributes = {
-    inherit utils;
-    inherit inputs pkgs customPackages lib home-manager;
+    inherit inputs pkgs home-manager;
     inherit user location;
-    inherit standardConfig;
   };
+  defaultModules = [
+    home-manager.nixosModules.home-manager
+    {
+      home-manager = {
+        useGlobalPkgs = true;
+        useUserPackages = true;
+        extraSpecialArgs = defaultAttributes;
+
+        users.${user} = {
+          imports = [
+            ../hosts/home.nix
+            ../config
+	  ];
+        };
+      };
+    }
+  ];
 in
 {
-  vm = utils.config.wrapDefaultConfig ({
-    hostName = "vm";
+  vm = lib.nixosSystem {
+    inherit system;
+    specialArgs =  {
+      host = {
+        hostName = "vm";
+      };
+      hostName = "vm";
+    } // defaultAttributes;
     modules = [
       ./vm
-    ];
-
-  } // defaultAttributes);
+      ./configuration.nix
+    ] ++ defaultModules;
+  };
 }
 

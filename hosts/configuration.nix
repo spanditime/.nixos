@@ -22,7 +22,6 @@
     enable = true;
     xkb = {
       layout = "us,ru";
-      options = "grp:caps_toggle";
     };
     
     libinput = {

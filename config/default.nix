@@ -5,6 +5,9 @@ let
 in
 {
   home = {
+    keyboard = {
+      options = "grp:capslock_toggle";
+    };
     file = {
       "${cfgPath}/awesome" = {
         source = ./spanditime/awesome;
@@ -18,11 +21,6 @@ in
       };
       "${cfgPath}/vifm" = {
         source = ./spanditime/vifm;
-        recursive = true;
-        enable = true;
-      };
-      "${cfgPath}/vimb" = {
-        source = ./spanditime/vimb;
         recursive = true;
         enable = true;
       };

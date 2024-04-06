@@ -4,6 +4,18 @@ let
   cfgPath = ".config";
 in
 {
+  programs = {
+    git = {
+      enable = true;
+	  aliases = {
+        co = "checkout";
+		blaame = "blame -w -C -C -C";
+	  };
+	  userName = "Frolov Eugene";
+	  userEmail = "spanditime@gmail.com";
+	};
+	gh.enable = true;
+  };
   home = {
     keyboard = {
       options = "grp:capslock_toggle";

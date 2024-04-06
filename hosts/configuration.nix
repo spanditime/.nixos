@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, user, hostName, customPackages, ... }:
+{ config, lib, pkgs, user, hostName,  ... }:
 {
   imports = [
     ../modules/services/pipewire.nix
@@ -20,7 +20,18 @@
   # Enable the X11 windowing system.
   services.xserver = {
     enable = true;
-    libinput.enable = true;
+    xkb = {
+      layout = "us,ru";
+    };
+    
+    libinput = {
+      enable = true;
+      touchpad = {
+        horizontalScrolling = true;
+        disableWhileTyping = true;
+        naturalScrolling = true;
+      };
+    };
     displayManager = {
       sddm.enable = true;
       defaultSession = "none+awesome";
@@ -28,7 +39,6 @@
     windowManager = {
       awesome = {
         enable = true;
-        package = customPackages.awesome;
 	luaModules = with pkgs.luaPackages; [
           luarocks
 	];

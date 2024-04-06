@@ -20,7 +20,19 @@
   # Enable the X11 windowing system.
   services.xserver = {
     enable = true;
-    libinput.enable = true;
+    xkb = {
+      layout = "us,ru";
+      options = "grp:caps_toggle";
+    };
+    
+    libinput = {
+      enable = true;
+      touchpad = {
+        horizontalScrolling = true;
+        disableWhileTyping = true;
+        naturalScrolling = true;
+      };
+    };
     displayManager = {
       sddm.enable = true;
       defaultSession = "none+awesome";

@@ -54,6 +54,7 @@
     git
     killall
     vifm
+    openvpn
   ];
   
   # Enable CUPS to print documents.

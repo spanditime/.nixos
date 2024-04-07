@@ -18,6 +18,9 @@
     user = "spanditime";
     location = "$HOME/.nixos";
   in{
+    imports = [
+      ./packages
+    ];
     nixosConfigurations = import ./hosts {
       inherit inputs nixpkgs home-manager;
       inherit user location;

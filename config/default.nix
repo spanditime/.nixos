@@ -20,6 +20,12 @@ in
     keyboard = {
       options = "grp:capslock_toggle";
     };
+    packages = with pkgs;[
+      remmina
+      telegram-desktop
+      mmex
+      tym
+    ];
     file = {
       "${cfgPath}/awesome" = {
         source = ./spanditime/awesome;

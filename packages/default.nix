@@ -1,6 +1,3 @@
-{pkgs, ...}:
-let 
-  awesome = import ./awesome.nix {inherit pkgs;};
-in {
-  inherit awesome;
+final: prev: {
+  awesome-git = (import ./awesome-git.nix) final prev;
 }

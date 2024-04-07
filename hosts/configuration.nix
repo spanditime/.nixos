@@ -6,7 +6,8 @@
 {
   imports = [
     ../modules/services/pipewire.nix
-  ];
+  ]; 
+  programs.fish.enable = true;
   users.users.${user} = {
     group = "users";
     extraGroups = [
@@ -14,6 +15,7 @@
       "networkmanager"
     ];
     isNormalUser = true;
+    shell = pkgs.fish;
   };
 
 
@@ -39,6 +41,7 @@
     windowManager = {
       awesome = {
         enable = true;
+        package = pkgs.awesome-git;
 	luaModules = with pkgs.luaPackages; [
           luarocks
 	];

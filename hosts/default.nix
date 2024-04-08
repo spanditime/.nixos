@@ -2,13 +2,11 @@
 
 let
   system = "x86_64-linux";
-  pkgs = import nixpkgs {
-    inherit system;
-  };
+  pkgs = import nixpkgs {overlays = [ (import ../packages) ]; inherit system;};
  # customPackages = import ../packages {inherit pkgs;};
   lib = nixpkgs.lib;
   defaultAttributes = {
-    inherit inputs pkgs home-manager;
+    inherit pkgs inputs home-manager;
     inherit user location;
   };
   defaultModules = [
@@ -32,16 +30,16 @@ in
 {
   vm = lib.nixosSystem {
     inherit system;
+    modules = [
+      ./vm
+      ./configuration.nix
+    ] ++ defaultModules;
     specialArgs =  {
       host = {
         hostName = "vm";
       };
       hostName = "vm";
     } // defaultAttributes;
-    modules = [
-      ./vm
-      ./configuration.nix
-    ] ++ defaultModules;
   };
 }
 

@@ -41,5 +41,18 @@ in
       hostName = "vm";
     } // defaultAttributes;
   };
+  hp-15s = lib.nixosSystem {
+    inherit system;
+    modules = [
+      ./hp-15s
+      ./configuration.nix
+    ] ++ defaultModules;
+    specialArgs =  {
+      host = {
+        hostName = "hp-15s";
+      };
+      hostName = "hp-15s";
+    } // defaultAttributes;
+  };
 }
 

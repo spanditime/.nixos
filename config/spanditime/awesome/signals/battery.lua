@@ -2,7 +2,7 @@ local gears = require("gears")
 local awful = require("awful")
 local gfs = require("gears.filesystem")
 
-battery
+local battery
 
 if not battery then
 	battery = {

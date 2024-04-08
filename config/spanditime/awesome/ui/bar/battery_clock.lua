@@ -10,12 +10,16 @@ local battery_progress_bar
 local container_clock_widget
 
 local update_battery_bar = function(charge, power)
+	local display_value = 100.0
+	if charge then
+		display_value = charge
+	end
 	if power then
 		battery_progress_bar.color = beautiful.bggreen
 	else
-		battery_progress_bar.color = utils.interpolate_colors(beautiful.fgred,beautiful.bgred,charge/100.0)
+		battery_progress_bar.color = utils.interpolate_colors(beautiful.fgred,beautiful.bgred,display_value/100.0)
 	end
-	battery_progress_bar.value = charge
+	battery_progress_bar.value = display_value
 end
 
 if not container_clock_widget then

@@ -26,7 +26,7 @@ in
     packages = with pkgs;[
       remmina
       telegram-desktop
-      mmex
+      mmex-1-7
       tym
     ];
     file = {

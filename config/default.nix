@@ -35,6 +35,10 @@ in
         recursive = true;
         enable = true;
       };
+      "${cfgPath}/tym/config.lua" = {
+        source = ./spanditime/tym/config.lua;
+        enable = true;
+      };
       "${cfgPath}/nvim" = {
         source = ./spanditime/nvim;
         recursive = true;

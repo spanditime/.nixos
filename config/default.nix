@@ -7,14 +7,17 @@ in
   programs = {
     git = {
       enable = true;
-	  aliases = {
+      aliases = {
         co = "checkout";
-		blaame = "blame -w -C -C -C";
-	  };
-	  userName = "Frolov Eugene";
-	  userEmail = "spanditime@gmail.com";
-	};
-	gh.enable = true;
+        blaame = "blame -w -C -C -C";
+      };
+      userName = "Frolov Eugene";
+      userEmail = "spanditime@gmail.com";
+      extraConfig = {
+        push.autoSetupRemote = true;
+      };
+    };
+    gh.enable = true;
   };
   home = {
     keyboard = {

@@ -2,7 +2,7 @@
 
 let
   system = "x86_64-linux";
-  pkgs = import nixpkgs {overlays = [ (import ../packages) ]; inherit system;};
+  pkgs = import nixpkgs {overlays = [ (import ../packages) ]; inherit system; config.allowUnfree = true;};
  # customPackages = import ../packages {inherit pkgs;};
   lib = nixpkgs.lib;
   defaultAttributes = {
@@ -10,6 +10,12 @@ let
     inherit user location;
   };
   defaultModules = [
+    ../modules/services/playerctld.nix
+    {
+      services.playerctld.enable = true;
+    }
+    ../modules/programs/pamixer.nix
+    ../modules/programs/light.nix
     home-manager.nixosModules.home-manager
     {
       home-manager = {
@@ -44,6 +50,7 @@ in
   hp-15s = lib.nixosSystem {
     inherit system;
     modules = [
+      ../modules/services/upower.nix
       ./hp-15s
       ./configuration.nix
     ] ++ defaultModules;

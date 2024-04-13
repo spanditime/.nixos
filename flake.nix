@@ -7,12 +7,17 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixvim = {
+      url = "github:nix-community/nixvim/nixos-23.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
     self,
     nixpkgs,
-    home-manager
+    home-manager,
+    nixvim
   } @ inputs:
   let 
     user = "spanditime";
@@ -22,7 +27,7 @@
       ./packages
     ];
     nixosConfigurations = import ./hosts {
-      inherit inputs nixpkgs home-manager;
+      inherit inputs nixpkgs home-manager nixvim;
       inherit user location;
     };
   };

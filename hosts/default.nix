@@ -1,4 +1,4 @@
-{ inputs, nixpkgs, home-manager, user, location, ... }:
+{ inputs, nixpkgs, home-manager, nixvim, user, location, ... }:
 
 let
   system = "x86_64-linux";
@@ -6,7 +6,7 @@ let
  # customPackages = import ../packages {inherit pkgs;};
   lib = nixpkgs.lib;
   defaultAttributes = {
-    inherit pkgs inputs home-manager;
+    inherit pkgs inputs home-manager nixvim;
     inherit user location;
   };
   defaultModules = [
@@ -25,6 +25,7 @@ let
 
         users.${user} = {
           imports = [
+            nixvim.homeManagerModules.nixvim
             ../hosts/home.nix
             ../config
 	  ];

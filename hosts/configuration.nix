@@ -20,32 +20,34 @@
   };
 
 
+   services = {
+     displayManager = {
+       sddm.enable = true;
+       defaultSession = "none+awesome";
+     };
   # Enable the X11 windowing system.
-  services.xserver = {
-    enable = true;
-    xkb = {
-      layout = "us,ru";
-    };
-    
-    libinput = {
+     xserver = {
       enable = true;
-      touchpad = {
-        horizontalScrolling = true;
-        disableWhileTyping = true;
-        naturalScrolling = true;
+      xkb = {
+        layout = "us,ru";
       };
-    };
-    displayManager = {
-      sddm.enable = true;
-      defaultSession = "none+awesome";
-    };
-    windowManager = {
-      awesome = {
+      windowManager = {
+        awesome = {
+          enable = true;
+          package = pkgs.awesome-git;
+          luaModules = with pkgs.luaPackages; [
+            luarocks
+          ];
+        };
+      };
+    
+      libinput = {
         enable = true;
-        package = pkgs.awesome-git;
-	luaModules = with pkgs.luaPackages; [
-          luarocks
-	];
+        touchpad = {
+          horizontalScrolling = true;
+          disableWhileTyping = true;
+          naturalScrolling = true;
+        };
       };
     };
   };

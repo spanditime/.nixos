@@ -4,6 +4,9 @@ let
   cfgPath = ".config";
 in
 {
+  imports = [
+    ./spanditime/nvim
+  ];
   programs = {
     git = {
       enable = true;
@@ -32,11 +35,6 @@ in
     file = {
       "${cfgPath}/awesome" = {
         source = ./spanditime/awesome;
-        recursive = true;
-        enable = true;
-      };
-      "${cfgPath}/nvim" = {
-        source = ./spanditime/nvim;
         recursive = true;
         enable = true;
       };

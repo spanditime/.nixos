@@ -2,8 +2,15 @@
 
 let 
   cfgPath = ".config";
+  colorscheme = import ./spanditime/colorschemes/atelier-dune-light.nix;
 in
 {
+  _module.args = {
+    inherit colorscheme;
+  };
+  imports = [
+    ./spanditime/nvim
+  ];
   programs = {
     git = {
       enable = true;
@@ -32,11 +39,6 @@ in
     file = {
       "${cfgPath}/awesome" = {
         source = ./spanditime/awesome;
-        recursive = true;
-        enable = true;
-      };
-      "${cfgPath}/nvim" = {
-        source = ./spanditime/nvim;
         recursive = true;
         enable = true;
       };

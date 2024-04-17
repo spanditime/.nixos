@@ -7,7 +7,6 @@
     
     packages = with pkgs; [
       vieb
-      neovim
       fzf
     ];
   };

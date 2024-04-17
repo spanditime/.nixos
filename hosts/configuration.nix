@@ -61,6 +61,7 @@
     killall
     vifm
     openvpn
+    nix-prefetch-github
   ];
   
   # Enable CUPS to print documents.

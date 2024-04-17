@@ -1,0 +1,63 @@
+{
+  "foreach":{
+    "prefix":["foreach"],
+    "body":[
+      "for(${3:const }auto ${2:element} : ${1:container}) {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Foreach loop"
+  },
+  "const noexcept()":{
+    "prefix":["cnex"],
+    "body":["const noexcept(true)"],
+    "description":"Const noexcept modifiers for member functions"
+  },
+  "Virutal member function definition":{
+    "prefix":["virtual"],
+    "body":["virtual ${2:void} ${1:function}($0);"],
+    "description":"Virtual member fucntion definition"
+  },
+  "Abstract member function definition":{
+    "prefix":["abstract"],
+    "body":["virtual ${2:void} ${1:function}($0) = 0;"],
+    "description":"Abstract member function definition"
+  },
+  "Override virtual member function definition":{
+    "prefix":["virtoverr","virtualoverride"],
+    "body":["virtual ${2:void} ${1:function}($0) = 0;"],
+    "description":"Override virtual member function definition"
+  },
+  "BOOST_HANA Struct":{
+    "prefix":["hanastruct", "hstruct", "htype", "metatype", "hanatype"],
+    "body":[
+      "struct ${1:Name}{",
+      "BOOST_HANA_DEFINE_STRUCT($1,",
+      "\t$0);",
+      "};"
+    ],
+    "description":"Boost.HANA struct definition"
+  },
+  "BOOST_HANA field":{
+    "prefix":["hanafield","hfield"],
+    "body":[
+      "($2,$1)$0"
+    ],
+    "description": "Helper for Boost.Hana define struct"
+  },
+  "STL optional":{
+    "prefix":["sopt"],
+    "body":["std::optional<$0>"],
+    "description":"short for std::optional"
+  },
+  "Header guards":{
+    "prefix":["hpp"],
+    "body":[
+      "#ifndef ${${RELATIVE_FILEPATH/[\\.\/-]/_/g}/(.*)/${1:upcase}/}",
+      "#define ${${RELATIVE_FILEPATH/[\\.\/-]/_/g}/(.*)/${1:upcase}/}",
+      "$0",
+      "#endif"
+    ],
+    "description":"Header guards"
+  }
+}

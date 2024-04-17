@@ -1,4 +1,4 @@
-{pkgs, ...}:
+{pkgs, colorscheme, ...}:
 {
   programs.nixvim = {
 
@@ -405,6 +405,16 @@
         action = "function() require('telescope.builtin').marks() end";
         lua = true;
       }
+      {
+        mode = "n";
+        key = "<leader>fs";
+        options = {
+          silent = true;
+          noremap = true;
+          desc = "Telescope - find in snippets";
+        };
+        action = "function() reqiure('telescope').extensions.luasnip.luasnip{} end";
+      }
 
       # help
       {
@@ -460,8 +470,12 @@
       # symbols and strucure 
       lsp = {
         enable = true;
+        capabilities = ''
+          require('cmp_nvim_lsp').default_capabilities()
+        '';
 
         servers = {
+          gopls.enable = true;
           clangd.enable = true;
           cmake.enable = true;
           jsonls.enable = true;
@@ -508,23 +522,24 @@
       cmp = 
       let
         mapping = {
-          "<C-h>" = "cmp.mapping.close()";
-          "<C-j>" = "cmp.mapping.select_next_item()";
-          "<C-k>" = "cmp.mapping.select_prev_item()";
-          "<C-l>" = "cmp.mapping.complete()";
+          "<C-h>" = "cmp.mapping(cmp.mapping.abort(), {'i','s','c'})";
+          "<C-j>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i','s','c'})";
+          "<C-k>" = "cmp.mapping(cmp.mapping.select_prev_item(), {'i','s','c'})";
+          "<C-l>" = "cmp.mapping(cmp.mapping.confirm({ select = true }), {'i','s','c'})";
+        };
+        snippet = {
+          expand = ''
+            function(args) require('luasnip').lsp_expand(args.body) end
+          '';
         };
       in {
         enable = true;
         settings = {
           inherit mapping;
-          snippet.expand = ''
-            function(args)
-              require('snippy').expand_snippet(args.body)
-            end
-          '';
+          inherit snippet;
           sources = [
             {
-              name = "nvim-lsp";
+              name = "nvim_lsp";
             }
             {
               name = "path";
@@ -533,20 +548,44 @@
               name = "buffer";
             }
             {
-              name = "snippy";
+              name = "luasnip";
             }
           ];
         };
-        cmdline = {
-          "/" = {
+        cmdline = 
+        let
+          search_settings = {
             inherit mapping;
+            inherit snippet;
             sources = [ { name = "buffer"; } ];
           };
+        in{
+          "/" = search_settings;
+          "?" = search_settings;
           ":" = {
           inherit mapping;
             source = [ { name = "path";} { name = "cmdline";} ];
           };
         };
+      };
+      cmp-nvim-lsp.enable = true;
+      cmp_luasnip.enable = true;
+      luasnip = {
+        enable = true;
+        fromVscode = [
+          {
+            lazyLoad = true;
+            paths = ../assets/snippets;
+          }
+        ];
+      };
+      hardtime = {
+        enable = true;
+        enabled = true;
+        disableMouse = true;
+        hint = true;
+        maxCount = 3;
+        maxTime = 1000;
       };
 
       # visuals and gui
@@ -567,7 +606,7 @@
         };
       };
       rainbow-delimiters = {
-        enable = true;
+        # enable = true;
       };
       gitgutter = {
         enable = true;
@@ -578,12 +617,33 @@
 
     };
 
-    extraPlugins = (with pkgs; [
-
-    ]) ++ (with pkgs.vimPlugins; [
+    extraPlugins = (with pkgs.vimPlugins; [
       Shade-nvim
       vifm-vim
+    ]) ++ (let
+      telescope-luasnip = pkgs.vimUtils.buildVimPlugin {
+        name = "telescope-luasnip";
+        src = pkgs.fetchFromGitHub {
+          owner = "benfowler";
+          repo = "telescope-luasnip.nvim";
+          rev = "2ef7da3a363890686dbaad18ddbf59177cfe4f78";
+          hash = "sha256-oilJP2HG4Q0bgy98Iavjq2xQiD9hxpCCbMqZ43GY2s8=";
+        };
+      };
+    in
+    [
+      telescope-luasnip
     ]);
+
+    extraConfigLua = ''
+      require('shade').setup({
+        overlay_opacity = 70,
+        keys = {
+          toggle = '<leader>zz',
+        }
+      })
+      require('telescope').load_extension('luasnip');
+    '';
 
     opts = {
       list = true;
@@ -600,6 +660,7 @@
       relativenumber=true;
       cursorline=true;
       cc="80,120";
+      scrolloff=5;
 
       # for ufo - do not change
       foldcolumn="1";
@@ -609,7 +670,10 @@
     };
     colorschemes.base16 = {
       enable = true;
-      colorscheme = "tokyo-city-light";
+      colorscheme = with colorscheme; {
+        inherit base00 base01 base02 base03 base04 base05 base06 base07;
+        inherit base08 base09 base0A base0B base0C base0D base0E base0F;
+      };
     };
   };
 }

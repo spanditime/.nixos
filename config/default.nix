@@ -2,8 +2,12 @@
 
 let 
   cfgPath = ".config";
+  colorscheme = import ./spanditime/colorschemes/atelier-dune-light.nix;
 in
 {
+  _module.args = {
+    inherit colorscheme;
+  };
   imports = [
     ./spanditime/nvim
   ];

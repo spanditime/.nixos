@@ -1,0 +1,12 @@
+{
+  "function":{
+    "prefix":["func"],
+    "body":["function() $0 end$1"],
+    "description":"Function declaration"
+  },
+  "local require":{
+    "prefix":["lreq"],
+    "body":["local ${1:name} = require('$1');"],
+    "description":"local require"
+  }
+}

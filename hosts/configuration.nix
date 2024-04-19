@@ -63,6 +63,11 @@
     openvpn
     nix-prefetch-github
   ];
+
+  fonts.packages = with pkgs; [
+    nerdfonts
+    jetbrains-mono
+  ];
   
   # Enable CUPS to print documents.
   # services.printing.enable = true;

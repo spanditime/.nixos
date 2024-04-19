@@ -1,8 +1,9 @@
 local tym = require("tym")
 
 tym.set_config({
-  cursor = 'ibeam',
-  autohide = true,
+  cursor_shape = 'block',
+  autohide = false,
   silent = true,
+  font = 'JetBrains Mono 12',
 })
 

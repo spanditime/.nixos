@@ -2,7 +2,7 @@
 
 let 
   cfgPath = ".config";
-  colorscheme = import ./spanditime/colorschemes/heetch-light.nix;
+  colorscheme = import ./spanditime/colorschemes/measured-ligt.nix;
 in
 {
   _module.args = {

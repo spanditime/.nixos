@@ -2,7 +2,7 @@
 
 let 
   cfgPath = ".config";
-  colorscheme = import ./spanditime/colorschemes/atelier-dune-light.nix;
+  colorscheme = import ./spanditime/colorschemes/heetch-light.nix;
 in
 {
   _module.args = {
@@ -59,14 +59,14 @@ in
             color_cursor_foreground = bg,
             color_highlight = fg,
             color_highlight_foreground = bg,
-            color_0  = bg,
-            color_1  = '${base01}',
-            color_2  = '${base02}',
-            color_3  = '${base03}',
-            color_4  = '${base04}',
-            color_5  = '${base05}',
-            color_6  = '${base06}',
-            color_7  = fg,
+            color_0  = '${base08}',
+            color_1  = '${base09}',
+            color_2  = '${base0A}',
+            color_3  = '${base0B}',
+            color_4  = '${base0C}',
+            color_5  = '${base0D}',
+            color_6  = '${base0E}',
+            color_7  = '${base0F}',
             color_8  = '${base08}',
             color_9  = '${base09}',
             color_10 = '${base0A}',

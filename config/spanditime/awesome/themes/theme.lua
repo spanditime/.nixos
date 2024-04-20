@@ -1,7 +1,7 @@
 ---------------------------
 -- Default awesome theme --
 ---------------------------
-
+local generated = require('themes.generated')
 local theme_assets = require("beautiful.theme_assets")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
@@ -11,20 +11,26 @@ local themes_path = gfs.get_themes_dir()
 
 local theme = {}
 
-theme.font          = "Cascadia Code 12"
-theme.taglist_font  = "Cascadia Code 12"
-theme.bg1 = "#17184b"
-theme.bg2 = "#43676b"
-theme.bg3 = "#3a5b52"
-theme.s1 = "#6d875b"
-theme.s2 = "#839b5c"
-theme.s3 = "#aacf53"
-theme.fg1 = "#fef4f4"
-theme.fg2 = "#fef4f4"
-theme.fggreen = "#e0ebaf"
-theme.bggreen = theme.s3
-theme.bgred = "#d3381c"
-theme.fgred = "#d3381c"
+theme.font          = generated.font
+theme.taglist_font  = generated.font
+
+theme.bg1 = generated.base00
+theme.bg2 = generated.base01
+theme.bg3 = generated.base02
+theme.s1  = generated.base03
+theme.s2  = generated.base04
+theme.s3  = generated.base05
+theme.fg2 = generated.base06
+theme.fg1 = generated.base07
+
+theme.red    = generated.base08
+theme.orange = generated.base09
+theme.yellow = generated.base0A
+theme.green  = generated.base0B
+theme.cyan   = generated.base0C
+theme.blue   = generated.base0D
+theme.purple = generated.base0E
+theme.pink   = generated.base0F
 
 --Notification variables--
 theme.notification_max_width = 600
@@ -32,7 +38,7 @@ theme.notification_max_height = 50
 theme.notification_border_width = 0
 theme.notification_fg = theme.fg1
 theme.notification_bg = theme.bg2
-theme.notification_font = "Cascadia Code 12"
+theme.notification_font = generated.font
 
 -- Background
 theme.bg_normal = theme.bg1

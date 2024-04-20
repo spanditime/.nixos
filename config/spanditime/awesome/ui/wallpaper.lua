@@ -1,8 +1,6 @@
 local beautiful = require 'beautiful'
-local gears = require 'gears'
+local awful = require 'awful'
 
 screen.connect_signal('request::wallpaper', function (s)
-	if beautiful.wallpaper then
-		gears.wallpaper.maximized(beautiful.wallpaper, s, false, nil)
-	end
+  awful.wallpaper { bg = beautiful.s2, screen = s}
 end)

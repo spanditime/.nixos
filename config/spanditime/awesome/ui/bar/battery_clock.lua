@@ -24,7 +24,8 @@ end
 
 if not container_clock_widget then
 	mytextclock = {
-    widget = wibox.widget.textclock,
+    wibox.widget.textclock(),
+    widget = wibox.widget.background,
     fg = beautiful.bg1,
   }
 

@@ -61,6 +61,13 @@ theme.taglist_fg_focus = theme.bg1
 theme.taglist_fg_occupied = theme.bg2
 theme.taglist_fg_empty = theme.fg2
 
+-- Prompt
+theme.prompt_bg = theme.bg1
+theme.prompt_fg = theme.fg1
+theme.prompt_bg_cursor = theme.s3
+theme.prompt_fg_cursor = theme.bg1
+
+
 theme.useless_gap   = 4
 theme.border_width  = 4
 theme.gap_single_client = true

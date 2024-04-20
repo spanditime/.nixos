@@ -7,7 +7,9 @@ local mykeyboardlayout
 local container_kbl_widget
 
 if not container_kbl_widget then
-	mykeyboardlayout = awful.widget.keyboardlayout()
+	mykeyboardlayout = awful.widget.keyboardlayout({
+    fg = beautiful.bg1,
+  })
 	container_kbl_widget = {
 		{
 			{
@@ -22,8 +24,8 @@ if not container_kbl_widget then
 					widget = wibox.container.margin,
 				},
 				shape = utils.roundedRectangle,
-				fg = beautiful.fg1,
-				bg = beautiful.bg3,
+				fg = beautiful.bg1,
+				bg = beautiful.s3,
 				widget = wibox.container.background
 			},
 			top = 4,

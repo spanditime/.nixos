@@ -55,8 +55,11 @@ theme.fg_minimize = theme.s3
 
 -- Taglist
 theme.taglist_bg_focus = theme.s3
-theme.taglist_bg_occupied = theme.s2
+theme.taglist_bg_occupied = theme.s1
 theme.taglist_bg_empty = theme.bg3
+theme.taglist_fg_focus = theme.bg1
+theme.taglist_fg_occupied = theme.bg2
+theme.taglist_fg_empty = theme.fg2
 
 theme.useless_gap   = 4
 theme.border_width  = 4

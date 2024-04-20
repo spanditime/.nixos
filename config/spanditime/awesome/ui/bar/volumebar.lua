@@ -37,7 +37,7 @@ if not container_volumebar_widget then
 
 	update_volumebar = function (value,muted)
 		if muted then
-			volumebar_indicator.bg = beautiful.bg3
+			volumebar_indicator.bg = beautiful.bg1
 		else
 			volumebar_indicator.bg = beautiful.s3
 		end

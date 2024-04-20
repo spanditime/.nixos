@@ -11,8 +11,9 @@ local update_brbar
 if not brbar then
 	brbar = wibox.widget{
 		border_width=5,
+    bg = beautiful.bg1,
 		color = beautiful.s3,
-		border_color = beautiful.bg2,
+		border_color = beautiful.bg1,
 		max_value = 100,
 		value = 40,
 		forced_width = 20,

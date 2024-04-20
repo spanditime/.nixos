@@ -23,9 +23,9 @@ local update_battery_bar = function(charge, power)
 end
 
 if not container_clock_widget then
-	mytextclock = wibox.widget.textclock()
-  mytextclock:setup {
-    fg = beautiful.bg1
+	mytextclock = {
+    widget = wibox.widget.textclock,
+    fg = beautiful.bg1,
   }
 
 	battery_progress_bar = wibox.widget{

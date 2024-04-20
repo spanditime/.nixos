@@ -19,10 +19,11 @@ local update_wifi_color
 
 
 if not container_pws_menu_widget then
+  local fg = beautiful.bg1
 	text_wifi_icon = wibox.widget{
 		font = beautiful.font,
 		widget=wibox.widget.textbox,
-		text = "󰖩 ",
+		text = "󰖩",
 	}
 	text_bl_icon = wibox.widget{
 		font = beautiful.font,
@@ -30,26 +31,27 @@ if not container_pws_menu_widget then
 		text = "󰂯 ",
 	}
 	text_pwr_icon = wibox.widget{
+    fg = fg,
 		font = beautiful.font,
 		widget=wibox.widget.textbox,
-		text = "⏼ ",
+		text = "⏼",
 	}
 	container_wifi_widget=wibox.widget{
 		text_wifi_icon,
 		widget=wibox.container.background,
-		fg = beautiful.fggreen
+		fg = fg,
 	}
 	container_bl_widget=wibox.widget{
 		text_bl_icon,
 		widget=wibox.container.background,
-		fg=beautiful.fggreen
+    fg = fg,
 	}
 	update_wifi_color = function(status)
 		if status == "" then
-			container_wifi_widget.fg = beautiful.bgred
+			container_wifi_widget.fg = beautiful.red
 			text_wifi_icon.text = "󰖪 "
 		else
-			container_wifi_widget.fg = beautiful.fggreen
+			container_wifi_widget.fg = beautiful.cyan
 			text_wifi_icon.text = "󰖩 "
 		end
 	end
@@ -71,8 +73,8 @@ if not container_pws_menu_widget then
 					widget = wibox.container.margin,
 				},
 				shape = utils.roundedRectangle,
-				fg = beautiful.fg1,
-				bg = beautiful.bg3,
+				fg = fg,
+				bg = beautiful.s3,
 				widget = wibox.container.background
 			},
 			top = 4,

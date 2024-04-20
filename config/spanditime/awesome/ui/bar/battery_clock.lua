@@ -15,7 +15,7 @@ local update_battery_bar = function(charge, power)
 		display_value = charge
 	end
 	if power then
-		battery_progress_bar.color = beautiful.green
+		battery_progress_bar.color = beautiful.cyan
 	else
 		battery_progress_bar.color = utils.interpolate_colors(beautiful.orange,beautiful.red,display_value/100.0)
 	end
@@ -24,17 +24,20 @@ end
 
 if not container_clock_widget then
 	mytextclock = wibox.widget.textclock()
+  mytextclock:setup {
+    fg = beautiful.bg1
+  }
 
 	battery_progress_bar = wibox.widget{
 		shape = gears.shape.rounded_bar,
 		bar_shape = gears.shape.rounded_bar,
-		background_color = beautiful.bg3,
-		color = beautiful.bgred,
+		bg = beautiful.fg2,
+		color = beautiful.green,
 		max_value = 100,
 		value = 100,
 		forced_width = 10,
 		border_width = 0,
-		border_color = beautiful.bg3,
+		border_color = beautiful.fg2,
 		widget = wibox.widget.progressbar,
 	}
 	container_clock_widget = {

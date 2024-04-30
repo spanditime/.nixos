@@ -2,7 +2,7 @@
 
 let 
   cfgPath = ".config";
-  colorscheme = import ./spanditime/colorschemes/measured-ligt.nix;
+  colorscheme = import ./spanditime/colorschemes/sakura.nix;
 in
 {
   _module.args = {
@@ -31,6 +31,7 @@ in
       options = "grp:capslock_toggle";
     };
     packages = with pkgs;[
+      anytype
       remmina
       telegram-desktop
       mmex

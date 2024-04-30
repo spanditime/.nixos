@@ -24,7 +24,27 @@
           noremap = true;
           desc = "Telescope - diagnostics";
         };
-        action = "function() reqiure('telescope.builtin').diagnostics() end";
+        action = "function() require('telescope.builtin').diagnostics() end";
+        lua = true;
+      }
+      {
+        mode = "n";
+        key = "<leader>d";
+        options = {
+          noremap = true;
+          desc = "Show current diagnostics";
+        };
+        action = "function() vim.diagnostic.open_float() end";
+        lua = true;
+      }
+      {
+        mode = "v";
+        key = "<leader>d";
+        options = {
+          noremap = true;
+          desc = "Show current diagnostics";
+        };
+        action = "function() vim.diagnostic.open_float() end";
         lua = true;
       }
       {
@@ -647,7 +667,7 @@
 
     opts = {
       list = true;
-      listchars = "space:⋅,eol:↴,tab:¦⋅>";
+      listchars = "space:⋅,eol:↴,tab:¦⋅›";
 
       hlsearch = true;
 

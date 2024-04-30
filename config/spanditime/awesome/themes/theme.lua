@@ -72,8 +72,8 @@ theme.useless_gap   = 4
 theme.border_width  = 4
 theme.gap_single_client = true
 theme.border_normal = theme.s1
-theme.border_focus  = theme.s3
-theme.border_marked = theme.s2
+theme.border_focus  = theme.cyan
+theme.border_marked = theme.s3
 
 theme.titlebar_bg_normal = theme.bg1
 theme.titlebar_bg_focus = theme.bg3

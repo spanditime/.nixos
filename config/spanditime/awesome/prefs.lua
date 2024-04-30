@@ -2,7 +2,7 @@ local menubar = require("menubar")
 
 modkey = "Mod4"
 
-terminal = "st"
+terminal = "tym"
 editor = os.getenv("EDITOR") or "nvim"
 file_manager = os.getenv("FILE_MANAGER") or "vifm"
 editor_cmd = terminal .. " -e " .. editor

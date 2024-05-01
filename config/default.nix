@@ -31,6 +31,7 @@ in
       options = "grp:capslock_toggle";
     };
     packages = with pkgs;[
+      # lychee-slicer
       anytype
       remmina
       telegram-desktop

@@ -532,13 +532,14 @@
       };
       
 
-      # refactoring
+      # extra motions and commands for code editing 
       comment = {
         enable = true;
       };
       treesitter-refactor = {
         # enable = true;
       };
+      
 
       # navigation
       telescope = {
@@ -658,8 +659,14 @@
     };
 
     extraPlugins = (with pkgs.vimPlugins; [
-      Shade-nvim
+      # extra commands and functions for code editing
+      nvim-surround
+
+      # navigation 
       vifm-vim
+      
+      # gui - visuals
+      Shade-nvim
     ]) ++ (let
       telescope-luasnip = pkgs.vimUtils.buildVimPlugin {
         name = "telescope-luasnip";
@@ -685,6 +692,9 @@
       })
 
       require('telescope').load_extension('luasnip');
+
+      require("nvim-surround").setup({
+      })
     '';
 
     opts = {

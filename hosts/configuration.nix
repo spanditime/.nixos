@@ -11,6 +11,8 @@
   users.users.${user} = {
     group = "users";
     extraGroups = [
+      "lp"
+      "audio"
       "wheel"
       "networkmanager"
       "video"

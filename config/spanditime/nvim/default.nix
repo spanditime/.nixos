@@ -559,6 +559,9 @@
           inherit snippet;
           sources = [
             {
+              name = "cmp_tabnine";
+            }
+            {
               name = "nvim_lsp";
             }
             {
@@ -588,6 +591,7 @@
           };
         };
       };
+      cmp-tabnine.enable = true;
       cmp-nvim-lsp.enable = true;
       cmp_luasnip.enable = true;
       luasnip = {
@@ -650,8 +654,25 @@
           hash = "sha256-oilJP2HG4Q0bgy98Iavjq2xQiD9hxpCCbMqZ43GY2s8=";
         };
       };
+      # tabnine-nvim = pkgs.vimUtils.buildVimPlugin {
+      #   name = "tabnine-nvim";
+      #   src = pkgs.fetchFromGitHub {
+      #     owner = "codota";
+      #     repo = "tabnine-nvim";
+      #     rev = "db3d8d0b12ccd0d622a30403d097cbe5dfd88535";
+      #     sha256 = "sha256-j1+KvoTNcMExZL59DFDNyQknftDuay4lAhFsRC1jziM=";
+      #   };
+      #   buildInputs = with pkgs; [
+      #     unzip
+      #     curl
+      #   ];
+      #   preInstall = '' 
+      #   curl google.com
+      #   ./dl_binaries.sh'';
+      # };
     in
     [
+      # tabnine-nvim
       telescope-luasnip
     ]);
 
@@ -662,7 +683,17 @@
           toggle = '<leader>zz',
         }
       })
+
       require('telescope').load_extension('luasnip');
+
+      require('tabnine').setup({
+        disable_auto_comment=true,
+        accept_keymap="<S-Space>",
+        dismiss_keymap = "<C-Space>",
+        debounce_ms = 800,
+        exclude_filetypes = {"TelescopePrompt", "Vifm"},
+        log_file_path = nil, -- absolute path to Tabnine log file
+      })
     '';
 
     opts = {

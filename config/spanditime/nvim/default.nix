@@ -495,13 +495,29 @@
         '';
 
         servers = {
+          # golang
           gopls.enable = true;
+          templ.enable = true;
+
+          # c/c++
           clangd.enable = true;
           cmake.enable = true;
-          jsonls.enable = true;
+
+          # other langs
           lua-ls.enable = true;
-          nixd.enable = true;
           sqls.enable = true;
+
+          nixd.enable = true;
+
+          # front-end
+          cssls.enable = true;
+          htmx.enable = true;
+          tsserver.enable = true;
+          html.enable = true;
+
+          # supplementary
+          marksman.enable = true;
+          jsonls.enable = true;
         };
       };
       treesitter = {

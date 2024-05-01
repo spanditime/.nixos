@@ -486,6 +486,10 @@
     ];
 
     plugins = {
+      project-nvim={
+        enable = true;
+        enableTelescope = true;
+      };
 
       # symbols and strucure 
       lsp = {

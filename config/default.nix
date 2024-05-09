@@ -26,17 +26,33 @@ in
     };
     gh.enable = true;
   };
+  services = {
+    flameshot.enable = true;
+  };
   home = {
     keyboard = {
       options = "grp:capslock_toggle";
     };
     packages = with pkgs;[
       # lychee-slicer
-      anytype
+      minecraft
+
       remmina
+
       telegram-desktop
-      mmex
+
+      # general dev tools - compilers ides, and tools daily used( tired of switching shells and stuff)
       tym
+      zig
+      go
+      nodejs
+      yarn
+      openscad
+      air
+      
+      # dev tools needed
+      electron
+      google-chrome
     ];
     file = {
       "${cfgPath}/awesome" = {

@@ -507,6 +507,12 @@
           clangd.enable = true;
           cmake.enable = true;
 
+          # zig
+          zls.enable = true;
+
+          # scala 
+          metals.enable = true;
+
           # other langs
           lua-ls.enable = true;
           sqls.enable = true;

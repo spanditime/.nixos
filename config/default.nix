@@ -2,7 +2,7 @@
 
 let 
   cfgPath = ".config";
-  colorscheme = import ./spanditime/colorschemes/sakura.nix;
+  colorscheme = import ./spanditime/colorschemes/brushtrees-dark.nix;
 in
 {
   _module.args = {

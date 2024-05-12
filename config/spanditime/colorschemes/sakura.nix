@@ -1,5 +1,5 @@
 {
-  flavour = "#light";
+  flavour = "light";
   base00 = "#feedf3";
   base01 = "#f8e2e7";
   base02 = "#e0ccd1";

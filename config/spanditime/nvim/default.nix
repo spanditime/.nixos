@@ -497,7 +497,14 @@
         capabilities = ''
           require('cmp_nvim_lsp').default_capabilities()
         '';
+        enabledServers= [
+          {
+            name = "openscad_lsp";
+            extraOptions = {
 
+            };
+          }
+        ];
         servers = {
           # golang
           gopls.enable = true;
@@ -667,6 +674,14 @@
       };
 
     };
+
+    autoCmd = [
+      {
+        event = ["BufEnter"];
+        pattern = [".scad"];
+        command = "set commentstring=\"// %s\"";
+      }
+    ];
 
     extraPlugins = (with pkgs.vimPlugins; [
       # extra commands and functions for code editing

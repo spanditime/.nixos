@@ -2,7 +2,7 @@
 
 let 
   cfgPath = ".config";
-  colorscheme = import ./spanditime/colorschemes/brushtrees-dark.nix;
+  colorscheme = import ./spanditime/colorschemes/gruvbox-material-light-medium.nix;
 in
 {
   _module.args = {
@@ -47,8 +47,10 @@ in
       go
       nodejs
       yarn
-      openscad
       air
+
+      openscad
+      openscad-lsp
       
       # dev tools needed
       electron

@@ -3,8 +3,14 @@
   imports = [
     ./hardware-configuration.nix
   ];
-  hardware.bluetooth.enable = true;
+  hardware.enableAllFirmware = true;
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+  };
+
   services.blueman.enable = true;
+
   networking.networkmanager.wifi.powersave = false;
 
 }

@@ -25,6 +25,12 @@ in
       };
     };
     gh.enable = true;
+    spotify-player = {
+      enable = true;
+    };
+    ripgrep = {
+      enable = true;
+    };
   };
   services = {
     flameshot.enable = true;
@@ -34,7 +40,9 @@ in
       options = "grp:capslock_toggle";
     };
     packages = with pkgs;[
+      blueberry
       # lychee-slicer
+      spotify
       minecraft
 
       remmina

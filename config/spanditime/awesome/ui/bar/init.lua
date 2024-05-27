@@ -37,6 +37,7 @@ screen.connect_signal('request::desktop_decoration', function (s)
 			{ widget = wibox.container.margin },
 			{ -- Right widgets
 				layout = wibox.layout.fixed.horizontal,
+        require("ui.bar.systray"),
 				require("ui.bar.keyboard"),
 				require("ui.bar.pwr_indicators"),
 				s.w_layout,

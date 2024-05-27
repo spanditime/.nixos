@@ -6,10 +6,11 @@ let
 in
 {
   _module.args = {
-    inherit colorscheme;
+    inherit colorscheme cfgPath;
   };
   imports = [
     ./spanditime/nvim
+    ./spanditime/Vieb
   ];
   programs = {
     git = {

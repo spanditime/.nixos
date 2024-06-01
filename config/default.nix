@@ -44,7 +44,7 @@ in
       blueberry
       # lychee-slicer
       spotify
-      minecraft
+      prismlauncher
 
       remmina
 

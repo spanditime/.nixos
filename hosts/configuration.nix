@@ -56,13 +56,18 @@
 
 
   environment.systemPackages = with pkgs; [
+    xclip
+    killall
+
     vim
+    git
+    vifm
+
     man-pages
     man-pages-posix
-    git
-    killall
-    vifm
+
     openvpn
+
     nix-prefetch-github
   ];
 

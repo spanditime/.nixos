@@ -173,7 +173,7 @@ map <C-Tab> <nextTab>
 " map <C-S-kPageDown> <moveTabForward>
 " map <C-S-kPageUp> <moveTabBackward>
 
-" map <A-F4> <:quitall>
+map <A-F4> <:quitall>
 " map <A-Left> <backInHistory>
 " map <A-Right> <forwardInHistory>
 map <C-+> <zoomIn>
@@ -181,7 +181,7 @@ map <C-=> <zoomIn>
 map <C-_> <zoomOut>
 map <C-0> <zoomReset>
 map <C-k0> <zoomReset>
-" map <C-F4> <:close>
+map <C-F4> <:close>
 " map <C-F5> <refreshTabWithoutCache>
 
 " HELPER browser features

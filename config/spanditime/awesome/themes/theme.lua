@@ -64,11 +64,11 @@ theme.taglist_fg_empty = theme.fg2
 -- Prompt
 theme.prompt_bg = theme.bg1
 theme.prompt_fg = theme.fg1
-theme.prompt_bg_cursor = theme.s3
-theme.prompt_fg_cursor = theme.bg1
+theme.prompt_bg_cursor = theme.bg3
+theme.prompt_fg_cursor = theme.fg1
 
 
-theme.useless_gap   = 4
+theme.useless_gap   = 6
 theme.border_width  = 4
 theme.gap_single_client = true
 theme.border_normal = theme.s1

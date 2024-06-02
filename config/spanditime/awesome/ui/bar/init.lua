@@ -5,7 +5,10 @@ local beautiful = require("beautiful")
 screen.connect_signal('request::desktop_decoration', function (s)
     awful.tag({ "1", "2", "3", "4", "5"}, s, awful.layout.layouts[1])
 
-    s.w_prompt = awful.widget.prompt()
+    s.w_prompt = awful.widget.prompt{
+        fg_cursor = beautiful.prompt_fg_cursor,
+        bg_cursor = beautiful.prompt_bg_cursor,
+    }
     s.w_taglist = require("ui.bar.taglist")(s)
 	s.w_layout = require("ui.bar.layout")(s)
 

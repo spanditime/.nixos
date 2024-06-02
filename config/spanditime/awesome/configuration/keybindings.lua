@@ -198,8 +198,9 @@ awful.keyboard.append_global_keybindings({
 	end),
 
 	-- Printscreen
-	awful.key({}, "Print", function () awful.util.spawn("flameshot full", false) end),
-	awful.key({modkey}, "Print", function () awful.util.spawn("flameshot gui", false) end),
+	awful.key({}, "Print", function () awful.util.spawn("flameshot screen", false) end),
+	awful.key({ "Shift" }, "Print", function () awful.util.spawn("flameshot full", false) end),
+	awful.key({ modkey }, "Print", function () awful.util.spawn("flameshot gui", false) end),
 })
 
 -- tag

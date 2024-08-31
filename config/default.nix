@@ -32,6 +32,9 @@ in
     ripgrep = {
       enable = true;
     };
+    feh = {
+      enable = true;
+    };
   };
   services = {
     flameshot.enable = true;
@@ -43,14 +46,17 @@ in
     packages = with pkgs;[
       blueberry
       # lychee-slicer
-      spotify
+      
       prismlauncher
+
       inkscape
+      spotify
 
       remmina
-
       mattermost-desktop
       telegram-desktop
+
+      mupdf
 
       vial
 

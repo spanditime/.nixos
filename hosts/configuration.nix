@@ -43,16 +43,18 @@
           ];
         };
       };
-    
-      libinput = {
-        enable = true;
-        touchpad = {
-          horizontalScrolling = true;
-          disableWhileTyping = true;
-          naturalScrolling = true;
-        };
+    };
+
+    libinput = {
+      enable = true;
+      touchpad = {
+        horizontalScrolling = true;
+        disableWhileTyping = true;
+        naturalScrolling = true;
       };
     };
+    
+    playerctld.enable = true;
   };
 
 

@@ -447,6 +447,7 @@
         };
         action = "function() require('telescope.builtin').help_tags() end";
         lua = true;
+        
       }
       {
         mode = "n";
@@ -539,7 +540,7 @@
       };
       treesitter = {
         enable = true;
-        # folding = true;
+        folding = true;
         indent = true;
         nixvimInjections = true;
         incrementalSelection.enable = true;
@@ -554,7 +555,7 @@
         enable = true;
       };
       treesitter-refactor = {
-        # enable = true;
+        enable = true;
       };
       
 
@@ -614,14 +615,18 @@
           search_settings = {
             inherit mapping;
             inherit snippet;
-            sources = [ { name = "buffer"; } ];
+            sources = [ 
+                  { name = "buffer"; }
+                  { name = "path"; }
+                ];
           };
         in{
           "/" = search_settings;
           "?" = search_settings;
           ":" = {
           inherit mapping;
-            source = [ { name = "path";} { name = "cmdline";} ];
+            sources = [ { name = "buffer";} { name = "path";} { name = "cmdline";} ];
+            option = { igonre_cmds = [ "Man" "!" ];};
           };
         };
       };
@@ -636,14 +641,6 @@
             paths = ../assets/snippets;
           }
         ];
-      };
-      hardtime = {
-        enable = true;
-        enabled = true;
-        disableMouse = true;
-        hint = true;
-        maxCount = 3;
-        maxTime = 1000;
       };
 
       # visuals and gui
@@ -664,13 +661,24 @@
         };
       };
       rainbow-delimiters = {
-        # enable = true;
-      };
-      gitgutter = {
         enable = true;
+      };
+      gitsigns = {
+        enable = true;
+        settings = {
+          current_line_blame = true;
+          linehl = true;
+        };
       };
       nvim-ufo = {
         enable = true;
+      };
+      markview = {
+        enable = true;
+        settings = {
+          mode = ["n" "no" "x"];
+          hybrid_modes = ["r" "i"];
+        };
       };
 
     };
@@ -691,7 +699,6 @@
       vifm-vim
       
       # gui - visuals
-      Shade-nvim
     ]) ++ (let
       telescope-luasnip = pkgs.vimUtils.buildVimPlugin {
         name = "telescope-luasnip";
@@ -709,13 +716,6 @@
     ]);
 
     extraConfigLua = ''
-      require('shade').setup({
-        overlay_opacity = 70,
-        keys = {
-          toggle = '<leader>zz',
-        }
-      })
-
       require('telescope').load_extension('luasnip');
 
       require("nvim-surround").setup({
@@ -737,7 +737,7 @@
       relativenumber=true;
       cursorline=true;
       cc="80,120";
-      scrolloff=5;
+      scrolloff=10;
 
       # for ufo - do not change
       foldcolumn="1";
@@ -747,7 +747,9 @@
     };
     colorschemes.base16 = {
       enable = true;
-      colorscheme = with colorscheme; {
+      settings = {
+      };
+      customColorScheme = with colorscheme; {
         inherit base00 base01 base02 base03 base04 base05 base06 base07;
         inherit base08 base09 base0A base0B base0C base0D base0E base0F;
       };

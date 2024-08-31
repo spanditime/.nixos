@@ -38,17 +38,21 @@ in
   };
   home = {
     keyboard = {
-      options = "grp:capslock_toggle";
+      options = ["grp:alt_shift_toggle"] ;
     };
     packages = with pkgs;[
       blueberry
       # lychee-slicer
       spotify
       prismlauncher
+      inkscape
 
       remmina
 
+      mattermost-desktop
       telegram-desktop
+
+      vial
 
       # general dev tools - compilers ides, and tools daily used( tired of switching shells and stuff)
       tym

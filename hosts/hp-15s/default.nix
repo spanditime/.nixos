@@ -10,6 +10,12 @@
   };
 
   services.blueman.enable = true;
+  services.v2raya.enable = true;
+  programs = {
+   steam = {
+     enable = true;
+   };
+  };
 
   networking.networkmanager.wifi.powersave = false;
 

@@ -10,10 +10,6 @@ let
     inherit user location;
   };
   defaultModules = [
-    ../modules/services/playerctld.nix
-    {
-      services.playerctld.enable = true;
-    }
     ../modules/programs/pamixer.nix
     ../modules/programs/light.nix
     home-manager.nixosModules.home-manager

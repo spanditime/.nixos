@@ -3,8 +3,6 @@ local awful = require("awful")
 -- AUTORUN
 -- This function will run once every time Awesome is started
 autorun = {
-	-- switch layout on caps
-	"setxkbmap -layout us,ru -option grp:caps_toggle",
 
 
 	-- xidlehook - xautolock alternative - still some issues - screen black out even when audio 

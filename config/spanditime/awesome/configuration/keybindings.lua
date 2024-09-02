@@ -162,6 +162,12 @@ awful.keyboard.append_global_keybindings({
               {description = "focus the next screen", group = "screen"}),
     awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end,
               {description = "focus the previous screen", group = "screen"}),
+    awful.key({ modkey, "Control" }, "e", function () awful.util.spawn("autorandr external",false) end,
+              {description = "change screen mode to external", group = "screen"}),
+    awful.key({ modkey, "Control" }, "v", function () awful.util.spawn("autorandr codesetup",false) end,
+              {description = "change screen mode to vertical(code)", group = "screen"}),
+    awful.key({ modkey, "Control" }, "i", function () awful.util.spawn("autorandr single",false) end,
+              {description = "change screen mode to internal(laptop)", group = "screen"}),
 })
 
 -- Media

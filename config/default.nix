@@ -90,6 +90,23 @@ in
             };
           };
         };
+        "both" = {
+          fingerprint = {
+            eDP-1=edp1f;
+            HDMI-1=hdmi1f;
+          };
+          config={
+            eDP-1 = eDPconf;
+            HDMI-1={
+              enable = true;
+              primary = true;
+              mode="2560x1440";
+              rate="144";
+              rotate="normal";
+              position="1980x0";
+            };
+          };
+        };
       };
     };
   };

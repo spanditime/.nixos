@@ -669,7 +669,8 @@
         enable = true;
         settings = {
           current_line_blame = true;
-          linehl = true;
+          linehl = false;
+          numhl = true;
         };
       };
       nvim-ufo = {

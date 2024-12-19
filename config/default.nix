@@ -121,12 +121,14 @@ in
     packages = with pkgs;[
       blueberry
       # lychee-slicer
+      nekoray
       
       prismlauncher
 
       inkscape
       spotify
 
+      anydesk
       remmina
       mattermost-desktop
       telegram-desktop
@@ -143,6 +145,7 @@ in
       yarn
       air
 
+      freecad
       openscad
       openscad-lsp
       

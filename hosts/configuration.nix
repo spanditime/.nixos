@@ -75,7 +75,7 @@
   ];
 
   fonts.packages = with pkgs; [
-    nerdfonts
+    nerd-fonts.symbols-only
     jetbrains-mono
   ];
   

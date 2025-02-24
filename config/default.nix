@@ -125,9 +125,12 @@ in
       
       prismlauncher
 
+      krita
       inkscape
       spotify
 
+      filezilla
+      gparted
       anydesk
       remmina
       mattermost-desktop
@@ -136,8 +139,11 @@ in
       mupdf
 
       vial
+      insomnia
 
       # general dev tools - compilers ides, and tools daily used( tired of switching shells and stuff)
+      delve
+      docker
       tym
       zig
       go
@@ -152,6 +158,11 @@ in
       # dev tools needed
       electron
       google-chrome
+
+
+      # sweet home
+      sweethome3d.application
+      sweethome3d.textures-editor
     ];
     file = {
       "${cfgPath}/awesome" = {

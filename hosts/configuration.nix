@@ -16,12 +16,14 @@
       "wheel"
       "networkmanager"
       "video"
+      "docker"
     ];
     isNormalUser = true;
     shell = pkgs.fish;
   };
 
 
+  virtualisation.docker.enable = true;
    services = {
      displayManager = {
        sddm.enable = true;
@@ -90,6 +92,16 @@
         networkmanager-openvpn
       ];
     };
+    interfaces."lo" ={ 
+      ipv6.routes = [
+        {
+          address = "::";
+          prefixLength = 0;
+          via = "::1";
+        }
+      ];
+    };
+    # resolvconf.dnsServers = [ "8.8.8.8." "8.8.4.4" ];
     # Configure network proxy if necessary
     # proxy.default = "http://user:password@proxy:port/";
     # proxy.noProxy = "127.0.0.1,localhost,internal.domain";
@@ -97,6 +109,7 @@
     # firewall.allowedTCPPorts = [ ... ];
     # firewall.allowedUDPPorts = [ ... ];
     # Or disable the firewall altogether.
+    # enableIPv6 = false;
     # firewall.enable = false;
   };
 

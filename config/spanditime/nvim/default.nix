@@ -1,4 +1,4 @@
-{pkgs, colorscheme, ...}:
+{pkgs, colorscheme, lib, ...}:
 {
   programs.nixvim = {
 
@@ -67,6 +67,96 @@
           desc = "Diagnostic - next";
         };
         action = "function() vim.diagnostic.goto_next() end";
+        lua = true;
+      }
+
+      # DAP - debugging
+      {
+        mode = "n";
+        key = "<leader>b";
+        options = {
+          silent = true;
+          noremap = true;
+          desc = "DAP toggle breakpoint";
+        };
+        action = "function() require'dap'.toggle_breakpoint() end";
+        lua = true;
+      }
+      {
+        mode = "n";
+        key = "<leader>B";
+        options = {
+          silent = true;
+          noremap = true;
+          desc = "DAP set breakpoint";
+        };
+        action = "function() require'dap'.set_breakpoint() end";
+        lua = true;
+      }
+      {
+        mode = "n";
+        key = "<leader>lp";
+        options = {
+          silent = true;
+          noremap = true;
+          desc = "DAP log point(breakpoint with log msg)";
+        };
+        action = "function() require'dap'.set_breakpoint(nil,nil, vim.fn.input('Log point message: ')) end";
+        lua = true;
+      }
+      {
+        mode = "n";
+        key = "<leader>C";
+        options = {
+          silent = true;
+          noremap = true;
+          desc = "DAP continue or start session";
+        };
+        action = "function() require'dap'.continue() end";
+        lua = true;
+      }
+      {
+        mode = "n";
+        key = "<leader>so";
+        options = {
+          silent = true;
+          noremap = true;
+          desc = "DAP step over";
+        };
+        action = "function() require'dap'.step_over() end";
+        lua = true;
+      }
+      {
+        mode = "n";
+        key = "<leader>si";
+        options = {
+          silent = true;
+          noremap = true;
+          desc = "DAP step over";
+        };
+        action = "function() require'dap'.step_into() end";
+        lua = true;
+      }
+      {
+        mode = "n";
+        key = "<leader>sO";
+        options = {
+          silent = true;
+          noremap = true;
+          desc = "DAP step out";
+        };
+        action = "function() require'dap'.step_out() end";
+        lua = true;
+      }
+      {
+        mode = "n";
+        key = "<leader>R";
+        options = {
+          silent = true;
+          noremap = true;
+          desc = "DAP repl";
+        };
+        action = "function() require'dap'.repl.open() end";
         lua = true;
       }
 
@@ -492,6 +582,51 @@
         enableTelescope = true;
       };
 
+      dap = {
+        enable = true;
+        adapters = {
+          servers = {
+            delve = {
+              host = "127.0.0.1";
+              port = "\${port}";
+
+              executable = {
+                command = lib.getExe pkgs.delve;
+                args = [ "dap" "-l" "127.0.0.1:\${port}" "--log" "--log-output=dap" ];
+              };
+            };
+          };
+        };
+
+        configurations = {
+          go = [
+            {
+              name = "delve";
+              type = "delve";
+              request = "launch";
+              program = "\${file}";
+            }
+          ];
+        };
+        luaConfig.post = ''
+          local dap, dapui = require("dap"), require("dapui")
+          dap.listeners.before.attach.dapui_config = function()
+            dapui.open()
+          end
+          dap.listeners.before.launch.dapui_config = function()
+            dapui.open()
+          end
+          dap.listeners.before.event_terminated.dapui_config = function()
+            dapui.close()
+          end
+          dap.listeners.before.event_exited.dapui_config = function()
+            dapui.close()
+          end
+          '';
+      };
+      dap-go.enable = true;
+      dap-ui.enable = true;
+
       # symbols and strucure 
       lsp = {
         enable = true;
@@ -510,33 +645,32 @@
           # golang
           gopls.enable = true;
           templ.enable = true;
-
           # c/c++
           clangd.enable = true;
           cmake.enable = true;
-
           # zig
           zls.enable = true;
-
           # scala 
           metals.enable = true;
 
           # other langs
-          lua-ls.enable = true;
+          lua_ls.enable = true;
           sqls.enable = true;
-
           nixd.enable = true;
 
           # front-end
           cssls.enable = true;
           htmx.enable = true;
-          tsserver.enable = true;
+          ts_ls.enable = true;
           html.enable = true;
 
           # supplementary
           marksman.enable = true;
           jsonls.enable = true;
         };
+      };
+      lsp-signature ={
+        enable = true;
       };
       treesitter = {
         enable = true;
@@ -595,8 +729,11 @@
           inherit mapping;
           inherit snippet;
           sources = [
+            # {
+            #   name = "cmp_tabnine";
+            # }
             {
-              name = "cmp_tabnine";
+              name = "cmp_dap";
             }
             {
               name = "nvim_lsp";
@@ -632,7 +769,8 @@
           };
         };
       };
-      cmp-tabnine.enable = true;
+      # cmp-tabnine.enable = true;
+      cmp-dap.enable = true;
       cmp-nvim-lsp.enable = true;
       cmp_luasnip.enable = true;
       luasnip = {

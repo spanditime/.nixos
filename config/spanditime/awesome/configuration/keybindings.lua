@@ -168,6 +168,8 @@ awful.keyboard.append_global_keybindings({
     awful.key({ modkey, "Control" }, "b", function () awful.util.spawn("autorandr both",false) end,
               {description = "change screen mode to both", group = "screenlayout"}),
     awful.key({ modkey, "Control" }, "v", function () awful.util.spawn("autorandr codesetup",false) end,
+              {description = "change screen mode to common", group = "screenlayout"}),
+    awful.key({ modkey, "Control", "Shift" }, "a", function () awful.util.spawn("autorandr common",false) end,
               {description = "change screen mode to code(vertical external)", group = "screenlayout"}),
     awful.key({ modkey, "Control" }, "i", function () awful.util.spawn("autorandr single",false) end,
               {description = "change screen mode to internal(laptop)", group = "screenlayout"}),

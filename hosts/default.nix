@@ -58,5 +58,19 @@ in
       hostName = "hp-15s";
     } // defaultAttributes;
   };
+  gmws = lib.nixosSystem {
+    inherit system;
+    modules = [
+      ../modules/services/upower.nix
+      ./gmws
+      ./configuration.nix
+    ] ++ defaultModules;
+    specialArgs =  {
+      host = {
+        hostName = "gmws";
+      };
+      hostName = "gmws";
+    } // defaultAttributes;
+  };
 }
 

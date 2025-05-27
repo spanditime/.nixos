@@ -6,6 +6,7 @@
 {
   imports = [
     ../modules/services/pipewire.nix
+    ../modules/services/udev-rules.nix
   ]; 
   programs.fish.enable = true;
   users.users.${user} = {
@@ -64,6 +65,8 @@
     xclip
     killall
 
+    ripgrep
+    fzf
     vim
     git
     vifm

@@ -501,8 +501,7 @@
           noremap = true;
           desc = "Telescope - find in buffers";
         };
-        action = "function() require('telescope.builtin').buffers() end";
-        lua = true;
+        action = ":lua require('telescope.builtin').buffers()<CR><ESC>";
       }
       {
         mode = "n";
@@ -512,8 +511,7 @@
           noremap = true;
           desc = "Telescope - find in marks";
         };
-        action = "function() require('telescope.builtin').marks() end";
-        lua = true;
+        action = ":lua require('telescope.builtin').marks()<CR><ESC>";
       }
       {
         mode = "n";
@@ -820,6 +818,9 @@
           mode = ["n" "no" "x"];
           hybrid_modes = ["r" "i"];
         };
+      };
+      web-devicons = {
+        enable = true;
       };
 
     };

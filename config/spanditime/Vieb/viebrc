@@ -1,90 +1,76 @@
 " Options
 set adblocker=static
-set cache=clearonquit
-set noclearcookiesonquit
-set nocleardownloadsoncompleted
-set nocleardownloadsonquit
-set clearhistoryinterval=none
-set noclearlocalstorageonquit
+
 set noclosablepinnedtabs
-set commandhist=persistuseronly
+
+" containers
 set containerkeeponreopen
 set containernewtab=s:usecurrent
 set containershowname=automatic
 set containersplitpage=s:usecurrent
 set containerstartuppage=main
+" todo: add container colors
+
+
 set countlimit=100
-set nodarkreader
-set darkreaderbg=#181a1b
-set darkreaderbrightness=100
-set darkreadercontrast=100
-set darkreaderfg=#e8e6e3
-set darkreadergrayscale=0
-set darkreadermode=dark
-set darkreadersepia=0
-set darkreadertextstroke=0
+
+
 set devtoolsposition=window
+
+
 set dialogalert=notifyblock
 set dialogconfirm=notifyallow
 set dialogprompt=notifyblock
-set downloadmethod=automatic
+
+" downloads
+set downloadmethod=confirm
 set downloadpath="~/Downloads"
-set encodeurlcopy=nospaces
-set encodeurlext=nospaces
-set explorehist=persist
+
+
+" xdg?
 set externalcommand=
-set favicons=session
-set followchars=alpha
-set followfallbackaction=filter
-set followlabelposition=outsiderighttop
-set follownewtabswitch
+
+:set favoritepages=["github.com", "youtube.com", "search.nixos.org/packages", "my.aeza.net"]
+
+set followchars=custom:jklhuiopyn
+
+set followfallbackaction=nothing
+
 set guifontsize=14
-set guifullscreennavbar=oninput
-set guifullscreentabbar=onupdate
-set guihidetimeout=2000
+
 set guinavbar=always
-set guiscrollbar=always
-set guitabbar=always
-set historyperpage=100
-set ignorecase
-set incsearch
-set inputfocusalignment=rememberend
-set keeprecentlyclosed
-set loadingindicator=spinner
-set mapsuggest=9000000000000000
-set mapsuggestposition=topright
-set markposition=newtab
-set markpositionshifted=default
-set maxmapdepth=10
+
+set guiscrollbar=onscroll
+
 set menupage=elementasneeded
-set menusuggest=both
-set menuvieb=both
-set mintabwidth=28
+
+set menusuggest=explore
+
+set menuvieb=tabbar
+
 set mouse=all
-set mousedisabledbehavior=nothing
-set nomousefocus
-set mousenewtabswitch
-set mousevisualmode=onswitch
-set nativenotification=never
-set nativetheme=dark
-set newtaburl=
-set notificationduration=6000
-set notificationforpermissions=silent
-set notificationforsystemcommands=errors
-set notificationlimitsmall=3
-set notificationposition=bottomright
+set mouse-=leaveinsert
+
+set nativetheme=light
+set notificationforpermissions=blocked
+
 set pdfbehavior=download
-set permissioncamera=block
+
+" todo: set up 
+set passthroughkeys={}
+
+set permissioncamera=ask
 set permissioncertificateerror=block
 set permissionclipboardread=block
 set permissionclipboardwrite=allow
 set permissionclosepage=allow
-set permissiondisplaycapture=block
+set permissiondisplaycapture=ask
 set permissionfullscreen=allow
 set permissiongeolocation=block
-set permissionhid=block
+" note: hid cant be ask for some reason
+set permissionhid=block 
 set permissionidledetection=block
-set permissionmediadevices=block
+set permissionmediadevices=allowkind
 set permissionmicrophone=block
 set permissionmidi=block
 set permissionmidisysex=block
@@ -92,60 +78,23 @@ set permissionnotifications=block
 set permissionopenexternal=ask
 set permissionpersistentstorage=block
 set permissionpointerlock=block
-set permissionscreenwakelock=block
+set permissionscreenwakelock=allow
 set permissionsensors=block
 set permissionserial=block
 set permissionunknown=block
 set permissionusb=block
 set permissionwindowmanagement=block
-set pointerposlocalid=domain
-set pointerpostype=casing
-set noquitonlasttabclose
-set noredirecttohttp
-set noreloadtaboncrash
-set replacespecial=special
-set replacestartup=never
-set requesttimeout=20000
-set restoretabs=all
-set scrollposlocalid=domain
-set scrollpostype=casing
-set searchemptyscope=global
-set searchpointeralignment=left
-set searchscope=global
-set shell=
-set showcmd
-set smartcase
-set spell
-set nosplitbelow
-set nosplitright
-set nosponsorblock
-set suggestbouncedelay=100
-set suggestcommands=9000000000000000
-set suggesttopsites=10
-set suspendbackgroundtab
-set suspendonrestore=regular
-set suspendtimeout=0
-set tabclosefocus=left
-set tabcycle
-set tabnewposition=right
-set tabopenmuted=never
-set taboverflow=scroll
-set tabreopenmuted=remember
-set tabreopenposition=right
-set timeout
-set timeoutlen=2000
-set translateapi=auto
-set translatekey=
-set translatelang=en-us
-set translateurl=https://api-free.deepl.com/v2/
-set nouserscript
+
+set searchwords=[["yt","youtube.com/results?search_query=%s"],["g","google.com/search?q=%s"]]
+
+set replacestartup=newtab
+
+" todo: might get into userstyle later
 set nouserstyle
-set vimcommand=gvim
-set windowfullscreen=restore
-set windowmaximize=restore
-set windowposition=restore
-set windowsize=restore
-set windowtitle='%app - %title'
+
+set vimcommand="tym -- nvim"
+set windowfullscreen=false
+
 
 mapclear!
 " buffer navigation and manipulation

@@ -11,13 +11,18 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
     self,
     nixpkgs,
     home-manager,
-    nixvim
+    nixvim,
+    nur
   } @ inputs:
   let 
     user = "spanditime";
@@ -27,7 +32,7 @@
       ./packages
     ];
     nixosConfigurations = import ./hosts {
-      inherit inputs nixpkgs home-manager nixvim;
+      inherit inputs nixpkgs nur home-manager nixvim;
       inherit user location;
     };
   };

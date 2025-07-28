@@ -40,15 +40,6 @@ in
       ];
     };
   };
-  xdg.desktopEntries = {
-    Erwic = {
-      type = "Application";
-      terminal = false;
-      icon="${pkgs.vieb}/icon.png";
-      categories=["Network" "WebBrowser"];
-      name = "Erwic";
-    };
-  };
   services = {
     kdeconnect.enable = true;
     flameshot.enable = true;
@@ -66,7 +57,7 @@ in
 
       telegram-desktop
       spotify
-      vieb
+      nur.repos.vieb-nix.vieb
       
       prismlauncher
 

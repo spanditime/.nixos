@@ -163,16 +163,18 @@ awful.keyboard.append_global_keybindings({
     awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end,
               {description = "focus the previous screen", group = "screen"}),
   -- screen layout
-    awful.key({ modkey, "Control" }, "e", function () awful.util.spawn("autorandr external",false) end,
-              {description = "change screen mode to external", group = "screenlayout"}),
-    awful.key({ modkey, "Control" }, "b", function () awful.util.spawn("autorandr both",false) end,
-              {description = "change screen mode to both", group = "screenlayout"}),
-    awful.key({ modkey, "Control" }, "v", function () awful.util.spawn("autorandr codesetup",false) end,
-              {description = "change screen mode to common", group = "screenlayout"}),
-    awful.key({ modkey, "Control", "Shift" }, "a", function () awful.util.spawn("autorandr common",false) end,
-              {description = "change screen mode to code(vertical external)", group = "screenlayout"}),
-    awful.key({ modkey, "Control" }, "i", function () awful.util.spawn("autorandr single",false) end,
-              {description = "change screen mode to internal(laptop)", group = "screenlayout"}),
+    -- awful.key({ modkey, "Control" }, "e", function () awful.util.spawn("autorandr external",false) end,
+    --           {description = "change screen mode to external", group = "screenlayout"}),
+    awful.key({ modkey, "Control" }, "a", function () awful.util.spawn("autorandr clone-largest",false) end,
+              {description = "change screen mode to clone-largest", group = "screenlayout"}),
+    awful.key({ modkey, "Control" }, "v", function () awful.util.spawn("autorandr horizontal",false) end,
+              {description = "change screen mode to vertical", group = "screenlayout"}),
+    -- awful.key({ modkey, "Control" }, "h", function () awful.util.spawn("autorandr vertical",false) end,
+    --           {description = "change screen mode to horizontal", group = "screenlayout"}),
+    -- awful.key({ modkey, "Control", "Shift" }, "a", function () awful.util.spawn("autorandr vertical",false) end,
+    --           {description = "change screen mode to code(vertical external)", group = "screenlayout"}),
+    -- awful.key({ modkey, "Control" }, "i", function () awful.util.spawn("autorandr single",false) end,
+    --           {description = "change screen mode to internal(laptop)", group = "screenlayout"}),
 })
 
 -- Media

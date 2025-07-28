@@ -26,6 +26,7 @@
 
   virtualisation.docker.enable = true;
    services = {
+     autorandr.enable = true;
      displayManager = {
        sddm.enable = true;
        defaultSession = "none+awesome";
@@ -113,7 +114,11 @@
     # firewall.allowedUDPPorts = [ ... ];
     # Or disable the firewall altogether.
     # enableIPv6 = false;
-    # firewall.enable = false;
+    firewall = rec {
+      enable = true;
+      allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
+      allowedUDPPortRanges = allowedTCPPortRanges;
+    };
   };
 
   # Some programs need SUID wrappers, can be configured further or are

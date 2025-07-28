@@ -32,6 +32,13 @@ in
     feh = {
       enable = true;
     };
+    vscode = {
+      enable = true;
+      package = pkgs.code-cursor;
+      extensions = with pkgs.vscode-extensions; [
+        asvetliakov.vscode-neovim
+      ];
+    };
   };
   xdg.desktopEntries = {
     Erwic = {
@@ -43,8 +50,8 @@ in
     };
   };
   services = {
+    kdeconnect.enable = true;
     flameshot.enable = true;
-    autorandr.enable = true;
   };
   home = {
     keyboard = {
@@ -65,7 +72,11 @@ in
 
       krita
       inkscape
+      blender
+  
+      # media
       mupdf
+      vlc
 
       filezilla
       qbittorrent
@@ -98,7 +109,6 @@ in
       # sweet home
       sweethome3d.application
       sweethome3d.textures-editor
-      vlc
     ];
     file = {
       "${cfgPath}/awesome" = {

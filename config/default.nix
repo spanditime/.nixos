@@ -11,6 +11,7 @@ in
   imports = [
     ./spanditime/nvim
     ./spanditime/Vieb
+    ./spanditime/cursor
   ];
   programs = {
     git = {
@@ -31,13 +32,6 @@ in
     };
     feh = {
       enable = true;
-    };
-    vscode = {
-      enable = true;
-      package = pkgs.code-cursor;
-      extensions = with pkgs.vscode-extensions; [
-        asvetliakov.vscode-neovim
-      ];
     };
   };
   services = {

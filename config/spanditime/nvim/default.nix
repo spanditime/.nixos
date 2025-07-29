@@ -7,7 +7,18 @@
 
     # KEYMAPS
     globals.mapleader = " ";
-    keymaps = [
+    keymaps = let
+      vsCodeWrapAction = {action, lua, vs_action}: let 
+        native = if lua then action else "vim.cmd('${action}')"; in ''
+          function()
+            if vim.g.vscode then
+              require('vscode').call('${vs_action}')
+            else
+              ${native};
+            end
+          end
+        '';
+      in [
       # ESSENTIALS
       {
         mode = "i";
@@ -436,7 +447,12 @@
           noremap = true;
           desc = "Explore files in vifm";
         };
-        action = "<cmd>Vifm<CR>";
+        action = vsCodeWrapAction{
+          action = "vim.cmd(\"Vifm\")";
+          vs_action = "workbench.explorer.fileView.focus";
+          lua = true;
+        };
+        lua = true;
       }
       {
         mode = "n";
@@ -468,7 +484,11 @@
           noremap = true;
           desc = "Telescope - find in treesitter";
         };
-        action = "function() require('telescope.builtin').treesitter() end";
+        action = vsCodeWrapAction {
+          action = "require('telescope.builtin').treesitter()";
+          vs_action = "workbench.action.showAllSymbols";
+          lua = true;
+        };
         lua = true;
       }
       {
@@ -479,7 +499,11 @@
           noremap = true;
           desc = "Telescope - find in files";
         };
-        action = "function() require('telescope.builtin').find_files() end";
+        action = vsCodeWrapAction {
+          action = "require('telescope.builtin').find_files()";
+          lua = true;
+          vs_action = "workbench.action.quickOpen";
+        };
         lua = true;
       }
       {
@@ -490,7 +514,11 @@
           noremap = true;
           desc = "Telescope - find in files live grep";
         };
-        action = "function() require('telescope.builtin').live_grep() end";
+        action = vsCodeWrapAction {
+          action = "require('telescope.builtin').live_grep()";
+          vs_action = "workbench.action.findInFiles";
+          lua = true;
+        };
         lua = true;
       }
       {

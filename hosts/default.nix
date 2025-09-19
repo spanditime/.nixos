@@ -2,7 +2,7 @@
 
 let
   system = "x86_64-linux";
-  pkgs = import nixpkgs {overlays = [ (import ../packages) inputs.nur.overlays.default ]; inherit system; config.allowUnfree = true;};
+  pkgs = import nixpkgs {overlays = [ (import ../packages) (import ../packages/lychee-slicer) inputs.nur.overlays.default ]; inherit system; config.allowUnfree = true;};
  # customPackages = import ../packages {inherit pkgs;};
   lib = nixpkgs.lib;
   defaultAttributes = {

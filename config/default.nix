@@ -58,8 +58,10 @@ in
       krita
       inkscape
       blender
+      lychee-slicer
   
       # media
+      obs-studio
       mupdf
       vlc
 

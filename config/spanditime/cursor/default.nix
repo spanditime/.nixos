@@ -2,7 +2,7 @@
 {
   programs.vscode = {
     enable = true;
-    package = pkgs.code-cursor-fhs;
+    package = pkgs.cursor-appimage;
     extensions = with pkgs.vscode-extensions; [
       asvetliakov.vscode-neovim
       jnoortheen.nix-ide

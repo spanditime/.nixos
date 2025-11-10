@@ -1,0 +1,48 @@
+# Create this file at /etc/nixos/packages/cursor.nix
+final: prev:
+let
+  pname = "cursor";
+  version = "0.50.5";
+  pkgs = prev;
+
+  src = pkgs.fetchurl {
+    url =
+    "https://downloads.cursor.com/production/63fcac100bd5d5749f2a98aa47d65f6eca61db39/linux/x64/Cursor-2.0.69-x86_64.AppImage";
+    # "https://api2.cursor.sh/updates/download/golden/linux-arm64/cursor/2.0";
+    sha256 = "1sspw89kilis79kn949gqpz07kvhwa0kx0rlqjnxnmpzgnlmh23p";
+  };
+  appimageContents = pkgs.appimageTools.extract { inherit pname version src; };
+in with pkgs;
+appimageTools.wrapType2 {
+  inherit pname version src;
+
+  extraInstallCommands = ''
+    install -m 444 -D ${appimageContents}/${pname}.desktop -t $out/share/applications
+    substituteInPlace $out/share/applications/${pname}.desktop \
+      --replace-quiet 'Exec=AppRun' 'Exec=${pname}'
+    cp -r ${appimageContents}/usr/share/icons $out/share
+
+    if [ -e ${appimageContents}/AppRun ]; then
+      install -m 755 -D ${appimageContents}/AppRun $out/bin/${pname}-${version}
+      if [ ! -L $out/bin/${pname} ]; then
+        ln -s $out/bin/${pname}-${version} $out/bin/${pname}
+      fi
+    else
+      echo "Error: Binary not found in extracted AppImage contents."
+      exit 1
+    fi
+  '';
+
+  extraBwrapArgs = [ "--bind-try /etc/nixos/ /etc/nixos/" ];
+
+  dieWithParent = false;
+
+  extraPkgs = pkgs: [
+    unzip
+    autoPatchelfHook
+    asar
+    (buildPackages.wrapGAppsHook.override {
+      inherit (buildPackages) makeWrapper;
+    })
+  ];
+}

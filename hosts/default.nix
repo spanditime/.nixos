@@ -12,6 +12,7 @@ let
   defaultModules = [
     ../modules/programs/pamixer.nix
     ../modules/programs/light.nix
+    ../modules/programs/appimage.nix
     home-manager.nixosModules.home-manager
     {
       home-manager = {

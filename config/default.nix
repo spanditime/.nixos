@@ -48,6 +48,7 @@ in
 
       blueberry
       nekoray
+      hiddify-app
 
       telegram-desktop
       spotify

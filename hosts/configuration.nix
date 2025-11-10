@@ -110,8 +110,8 @@
     # proxy.default = "http://user:password@proxy:port/";
     # proxy.noProxy = "127.0.0.1,localhost,internal.domain";
     # Open ports in the firewall.
-    # firewall.allowedTCPPorts = [ ... ];
-    # firewall.allowedUDPPorts = [ ... ];
+    firewall.allowedTCPPorts = [ 42124 ];
+    firewall.allowedUDPPorts = [ 42124 ];
     # Or disable the firewall altogether.
     # enableIPv6 = false;
   };
